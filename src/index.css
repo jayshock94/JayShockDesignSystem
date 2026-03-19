@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background-default: #f2f2f4;
+    --color-background-subtle: #e8e8ea;
+    --color-surface-default: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-surface-glass: rgba(255,255,255,0.7);
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #48484a;
+    --color-text-tertiary: #8e8e93;
+    --color-text-disabled: #c7c7cc;
+    --color-border-default: #d1d1d6;
+    --color-border-subtle: #e5e5ea;
+    --color-border-strong: #8e8e93;
+    --color-border-focus: #0a84ff;
+    --color-action-primary: #1d1d1f;
+    --color-action-primary-hover: #3a3a3c;
+    --color-action-secondary: #30d158;
+    --radius-none: 0px;
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-3xl: 28px;
+    --radius-full: 9999px;
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+  }
+
+  .dark {
+    --color-background-default: #1d1d1f;
+    --color-background-subtle: #2c2c2e;
+    --color-surface-default: #2c2c2e;
+    --color-surface-raised: #3a3a3c;
+    --color-surface-glass: rgba(30,30,32,0.7);
+    --color-text-primary: #f5f5f7;
+    --color-text-secondary: #aeaeb2;
+    --color-text-tertiary: #636366;
+    --color-text-disabled: #48484a;
+    --color-border-default: #3a3a3c;
+    --color-border-subtle: #2c2c2e;
+    --color-border-strong: #636366;
+    --color-border-focus: #409cff;
+    --color-action-primary: #f5f5f7;
+    --color-action-primary-hover: #d1d1d6;
+    --color-action-secondary: #32d74b;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background-default);
+    color: var(--color-text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 300ms ease, color 300ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--color-surface-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark .glass-card {
+    background: rgba(30,30,32,0.7);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .glass-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .dark .glass-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  .focus-ring {
+    outline: none;
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-default) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-border-default);
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
